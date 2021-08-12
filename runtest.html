@@ -1,0 +1,175 @@
+<html>
+    <head> </head>
+    <body>
+        <div id="parent"></div>
+        <script src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("jquery", "1.2.6");
+
+            parameters = {
+                circleCount: 100,
+                circleSize: 100,
+                canvasWidth: 5000,
+                canvasHeight: 5000,
+            };
+
+            VARIATION_COUNT = 6;
+
+            var CanvasElementTest = {
+                createGraphicsContext: function (canvasWidth, canvasHeight) {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = canvasWidth;
+                    canvas.height = canvasHeight;
+                    canvas.style.width = canvasWidth + "px";
+                    canvas.style.height = canvasHeight + "px";
+					// canvas.style.backgroundColor = "red";
+                    this.context = canvas.getContext("2d");
+                    this.width = canvasWidth;
+                    this.height = canvasHeight;
+                    return canvas;
+                },
+
+                drawCircle: function (x, y, radius) {
+                    this.context.beginPath();
+                    this.context.arc(x, y, radius, 0, Math.PI * 2, true);
+                    this.context.closePath();
+                    this.context.fill();
+                },
+
+                clearAll: function () {
+                    this.context.clearRect(0, 0, this.width, this.height);
+                },
+            };
+
+            var SVGTest = {
+                createGraphicsContext: function (canvasWidth, canvasHeight) {
+                    var svg = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "svg"
+                    );
+                    svg.setAttribute("width", canvasWidth);
+                    svg.setAttribute("height", canvasHeight);
+
+                    this.svg = svg;
+                    return svg;
+                },
+
+                drawCircle: function (x, y, radius) {
+                    var circle = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "circle"
+                    );
+
+                    circle.setAttribute("r", radius + "px");
+                    circle.setAttribute("cx", x + "px");
+                    circle.setAttribute("cy", y + "px");
+                    circle.setAttribute("style", "fill: black;");
+                    this.svg.appendChild(circle);
+                },
+
+                clearAll: function () {
+                    var svg = this.svg;
+                    for (var i = svg.childNodes.length - 1; i >= 0; i--) {
+                        svg.removeChild(svg.childNodes[i]);
+                    }
+                },
+            };
+
+            function executionDuration(func) {
+                var start = new Date();
+                func();
+                var end = new Date();
+
+                return end - start;
+            }
+
+            function runTest(technology, params) {
+                benchmarkResults = {};
+                // Begin the test
+                benchmarkResults.creationTime = executionDuration(function () {
+                    var graphicsElement = technology.createGraphicsContext(
+                        params.canvasWidth,
+                        params.canvasHeight
+                    );
+
+                    $("#parent").append(graphicsElement);
+                });
+
+                benchmarkResults.totalDrawTime = 0;
+
+                var circlesPerRow = parseInt(
+                    params.canvasWidth / params.circleSize / 2,
+                    10
+                );
+                var x, y;
+                for (
+                    var circleIndex = 0;
+                    circleIndex < params.circleCount;
+                    circleIndex++
+                ) {
+                    var rowIndex = circleIndex % circlesPerRow;
+                    x = rowIndex * params.circleSize * 2;
+                    var colIndex = parseInt(circleIndex / circlesPerRow, 10);
+                    y = colIndex * params.circleSize * 2;
+
+                    var drawTime = executionDuration(function () {
+                        technology.drawCircle(x, y, params.circleSize);
+                    });
+                    benchmarkResults.totalDrawTime += drawTime;
+                }
+
+                benchmarkResults.clearTime = executionDuration(function () {
+                    technology.clearAll();
+                });
+
+                $("#parent").html("");
+                return benchmarkResults;
+            }
+
+            competingTechnologies = {
+                SVG: SVGTest,
+                "HTML 5 <canvas>": CanvasElementTest,
+            };
+            function compareAll(techs, parameters) {
+                console.log(
+                    parameters.circleCount +
+                        " circles of size " +
+                        parameters.circleSize +
+                        " on a " +
+                        parameters.canvasWidth +
+                        "x" +
+                        parameters.canvasHeight +
+                        " canvas"
+                );
+                for (var techName in techs) {
+                    var technology = techs[techName];
+                    var benchmark = runTest(technology, parameters);
+
+                    console.log(techName + " benchmark:");
+                    console.log("  creation: " + benchmark.creationTime + "ms");
+                    console.log("  render: " + benchmark.totalDrawTime + "ms");
+                    console.log("  clear: " + benchmark.clearTime + "ms");
+                }
+                console.log("-----------");
+            }
+
+            google.setOnLoadCallback(function () {
+                for (var variedParam in parameters) {
+                    var originalValue = parameters[variedParam];
+                    console.log("varying " + variedParam);
+                    for (
+                        var multiplier = 1;
+                        multiplier < VARIATION_COUNT + 1;
+                        multiplier++
+                    ) {
+                        parameters[variedParam] = originalValue * multiplier;
+
+                        compareAll(competingTechnologies, parameters);
+                    }
+					
+                    parameters[variedParam] = originalValue;
+                }
+            });
+        </script>
+    </body>
+</html>

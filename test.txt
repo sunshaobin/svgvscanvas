@@ -1,0 +1,248 @@
+environment:
+	window 10 
+	chromium 版本 92.0.4515.131（正式版本） （64 位）
+
+varying circleCount
+100 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 8ms
+  render: 2ms
+  clear: 1ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+-----------
+200 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 4ms
+  clear: 1ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+-----------
+300 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 3ms
+  clear: 1ms
+HTML 5 <canvas> benchmark:
+  creation: 1ms
+  render: 3ms
+  clear: 0ms
+-----------
+400 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 5ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+-----------
+500 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 9ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 3ms
+  clear: 0ms
+-----------
+600 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 11ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 1ms
+-----------
+varying circleSize
+100 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 3ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 1ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 200 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 2ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 0ms
+  clear: 0ms
+-----------
+100 circles of size 300 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 5ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 400 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 1ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 1ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 500 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 3ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 600 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 0ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 1ms
+  render: 0ms
+  clear: 0ms
+-----------
+varying canvasWidth
+100 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 10000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 0ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 15000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 1ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 20000x5000 canvas
+SVG benchmark:
+  creation: 1ms
+  render: 0ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 287ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 25000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 5ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 322ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 30000x5000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 5ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 381ms
+  clear: 0ms
+-----------
+varying canvasHeight
+100 circles of size 100 on a 5000x5000 canvas
+SVG benchmark:
+  creation: 1ms
+  render: 0ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 5000x10000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 71ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 5000x15000 canvas
+SVG benchmark:
+  creation: 48ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 5000x20000 canvas
+SVG benchmark:
+  creation: 1ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 259ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 5000x25000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 1ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 299ms
+  clear: 0ms
+-----------
+100 circles of size 100 on a 5000x30000 canvas
+SVG benchmark:
+  creation: 0ms
+  render: 2ms
+  clear: 0ms
+HTML 5 <canvas> benchmark:
+  creation: 0ms
+  render: 392ms
+  clear: 0ms
+-----------
